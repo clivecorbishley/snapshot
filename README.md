@@ -9,6 +9,11 @@ You will need to install the following packages:
 
 Both of these can be installed using Homebrew, or apt-get.
 
+You will also need to make sure that the script is executable:
+```
+$ chmod +x ./snapshot
+```
+
 ### OSX
 
 ```
@@ -23,5 +28,9 @@ $ apt-get update
 $ apt-get install imagemagick pdftk
 ```
 
-
 ## Running
+
+```
+$ ./snapshot
+```
+
