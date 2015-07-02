@@ -28,6 +28,26 @@ $ apt-get update
 $ apt-get install imagemagick pdftk
 ```
 
+## Config
+
+### Hosts File
+This is where the `hosts` file comes in.
+Your hosts file should look like this
+
+```
+host1.example.com
+192.168.1.123
+```
+
+### SSH Key
+
+You will need to ensure that your ssh-key is in the `authorized_keys` file for the root user on the host.
+
+On OSX, the quickest way to get your ssh-key onto your clipboard is:
+```
+$ cat ~/.ssh/id_rsa.pub | pbcopy
+```
+
 ## Running
 
 ```
