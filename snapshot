@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Reading the host files into an array.
+IFS=$'\n' read -d '' -r -a hosts < ./hosts
+
+# Creating the directory for the output
+mkdir iptables 2> /dev/null
+
+for host in "${hosts[@]}"
+do
+  # Printing out the IP tables
+  # Runs the command remotely on the host, while out outputting the data locally.
+  # The echoing of the hostname is stylistic for the final output.
+  # The output from the remote host is then piped into ImageMagick's convert tool.
+  # Upping the density will up the quality of the image. Since it's just text output,
+  # there's no need to go above 100. File size can be a pain.
+  ssh root@$host 'echo -e $'${host}:\n' && iptables --list' | convert -density 100 label:@- iptables/$host-iptables.pdf
+done
+
+# The pdftk tool merges all the pdfs for the various hosts, and merges them into a single file
+pdftk iptables/*-iptables.pdf cat output iptables/iptables.pdf
+
+echo "Snapshot Complete"
