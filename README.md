@@ -31,8 +31,8 @@ $ apt-get install imagemagick pdftk
 ## Config
 
 ### Hosts File
-This is where the `hosts` file comes in.
-Your hosts file should look like this
+This is where the `hosts` file comes in. It's the scripts source for which hosts you would like to snapshot. 
+Your hosts file should look like this, with one line per host.
 
 ```
 host1.example.com
